@@ -33,8 +33,19 @@ ctx.stroke()
 
 drawDot(A, "A")
 drawDot(B, "B")
-drawDot(C, "B")
-drawDot(D, "B")
+drawDot(C, "C")
+drawDot(D, "D")
+
+const Middle = {
+    x:lerp(A.x, B.x, 0.5),
+    y:lerp(A.y, B.y, 0.5)
+}
+
+drawDot(Middle, "M")
+
+function lerp(A, B, t){
+    return A+(B-A)*t
+}
 
 function drawDot(point, label){
     //draw circle
@@ -49,7 +60,7 @@ function drawDot(point, label){
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = "bold 14px Arial";
-    ctx.fillText("A", point.x, point.y);
+    ctx.fillText(label, point.x, point.y);
 };
     </script>
 </body>
