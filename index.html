@@ -42,12 +42,18 @@ function animate(){
     drawDot(C, "C")
     drawDot(D, "D")
 
-    const Middle = {
+    const M = {
         x:lerp(A.x, B.x, t),
         y:lerp(A.y, B.y, t)
     }
+    const N = {
+        x:lerp(C.x, D.x, t),
+        y:lerp(C.y, D.y, t)
+    }
 
-    drawDot(Middle, "M", t<0 || t>1 )
+    drawDot(M, "M", t<0 || t>1 )
+    drawDot(N, "N", t<0 || t>1 )
+        
     t += 0.005
     requestAnimationFrame(animate)
 }
