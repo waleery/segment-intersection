@@ -58,6 +58,38 @@ function animate(){
     requestAnimationFrame(animate)
 }
 
+function getIntersection(A, B, C, D){
+    /*
+        lerp functions    what is 't' and 'u'
+        Ix = Ax + (Bx - Ax) * t = Cx + (Dx-Cx)  * u 
+        Iy = Ay + (By - Ay) * t = Cy + (Dy-Cy)  * u 
+
+        Ax + (Bx-Ax) * t = Cx + (Dx-Cx) * u  | -Cx
+        Ax - Cx + (Bx-Ax) * t = (Dx-Cx) * u 
+
+        Ay + (By-Ay) * t = Cy + (Dy-Cy) * u  | -Cy
+        Ay - Cy + (By-Ay) * t = (Dy-Cy) * u  |  * (Dx-Cx)
+
+        (Dx-Cx)(Ay-Cy) + (Dx-Cx)(By-Ay) * t = (Dy-Cy)(Dx-Cx) * u  // 5 lines above
+
+
+        (Dx-Cx)(Ay-Cy) + (Dx-Cx)(By-Ay) * t = (Dy-Cy)(Ax-Cx) + (Dy-Cy)(Bx-Ax) * t | -(Dy-Cy)(Ax-Cx)
+                                                                                     
+
+        (Dx-Cx)(Ay-Cy) + (Dx-Cx)(By-Ay) * t - (Dy-Cy)(Ax-Cx) =  (Dy-Cy)(Bx-Ax) * t | -(Dx-Cx)(By-Ay) * t
+        
+        (Dx-Cx)(Ay-Cy) - (Dy-Cy)(Ax-Cx) = (Dy-Cy)(Bx-Ax) * t - (Dx-Cx)(By-Ay) * t
+
+        (Dx-Cx)(Ay-Cy) - (Dy-Cy)(Ax-Cx) = [(Dy-Cy)(Bx-Ax) - (Dx-Cx)(By-Ay)] * t  | /(Dy-Cy)(Bx-Ax) - (Dx-Cx)(By-Ay)
+
+        [(Dx-Cx)(Ay-Cy) - (Dy-Cy)(Ax-Cx)] / [(Dy-Cy)(Bx-Ax) - (Dx-Cx)(By-Ay)] = t
+
+
+        
+
+    */
+
+}
 
 
 function lerp(A, B, t){
