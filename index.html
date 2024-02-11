@@ -53,7 +53,10 @@ function animate(){
 
     drawDot(M, "M", t<0 || t>1 )
     drawDot(N, "N", t<0 || t>1 )
-        
+
+    const I = getIntersection(A, B, C, D)
+    drawDot(I, "I")
+    
     t += 0.005
     requestAnimationFrame(animate)
 }
@@ -84,11 +87,19 @@ function getIntersection(A, B, C, D){
 
         [(Dx-Cx)(Ay-Cy) - (Dy-Cy)(Ax-Cx)] / [(Dy-Cy)(Bx-Ax) - (Dx-Cx)(By-Ay)] = t
 
-
+        t = top / bottom
         
-
+        bottom cant be 0
     */
+        const top = (D.x-C.x)*(A.y-C.y) - (D.y-C.y)*(A.x-C.x)
+        const bottom = (D.y-C.y)*(B.x-A.x) - (D.x-C.x)*(B.y-A.y)
+        const t = top/bottom
 
+        // 't' is point on AB segment. If we would get 'u' then we should calculate lerp for CD segment
+        return {
+            x:lerp(A.x, B.x, t),
+            y:lerp(A.y, B.y, t)
+        }
 }
 
 
