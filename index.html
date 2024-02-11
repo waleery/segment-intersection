@@ -61,7 +61,9 @@ function animate(){
     drawDot(D, "D")
 
     const I = getIntersection(A, B, C, D)
-    drawDot(I, "I")
+    if(I){
+        drawDot(I, "I")
+    }
     
     requestAnimationFrame(animate)
 }
@@ -98,13 +100,23 @@ function getIntersection(A, B, C, D){
     */
         const top = (D.x-C.x)*(A.y-C.y) - (D.y-C.y)*(A.x-C.x)
         const bottom = (D.y-C.y)*(B.x-A.x) - (D.x-C.x)*(B.y-A.y)
-        const t = top/bottom
 
-        // 't' is point on AB segment. If we would get 'u' then we should calculate lerp for CD segment
-        return {
-            x:lerp(A.x, B.x, t),
-            y:lerp(A.y, B.y, t)
+        //can not divide by 0
+        if(bottom != 0){
+            const t = top/bottom
+            //we only want point if lines cross
+            if(t>=0 && t<=1){
+                console.log(t)
+
+                // 't' is point on AB segment. If we would get 'u' then we should calculate lerp for CD segment
+                return {
+                    x:lerp(A.x, B.x, t),
+                    y:lerp(A.y, B.y, t),
+                    offset:t
+                }
+            }
         }
+        return null
 }
 
 
